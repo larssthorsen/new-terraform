@@ -1,7 +1,3 @@
-
-
-
-
 resource "random_string" "random_string" {
     length = 8
     special = false
@@ -9,7 +5,7 @@ resource "random_string" "random_string" {
 }
 
 resource "azurerm_resource_group" "rg_web" {
-    name = var.rg_name
+    name = local.rg_name
     location = var.location
   
 }
@@ -33,7 +29,7 @@ resource "azurerm_storage_blob" "index_html" {
     storage_container_name = "$web"
     type = "Block"
     content_type = "text/html"
-    source_content = var.source_content
+    source_content = local.source_content
   
 }
 
